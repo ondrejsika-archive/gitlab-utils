@@ -5,4 +5,15 @@
 
 Utils for Gitlab and Gitlab CI
 
+## Install
+
+```
+git clone git@github.com:ondrejsika/gitlab-utils.git
+```
+
+## Activate
+
+```
+export PATH=$PATH:`pwd`/gitlab-utils
+```
 
