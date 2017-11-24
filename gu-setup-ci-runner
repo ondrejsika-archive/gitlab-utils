@@ -1,0 +1,24 @@
+#!/bin/sh
+
+GITLABCI_URL=$1
+GITLABCI_TOKEN=$2
+RUNNER_NAME=$3
+
+CONTAINER=gitlab-runner-$RUNNER_NAME
+
+docker run -d \
+    --name $CONTAINER \
+    --restart always \
+    -v /gitlab-runner-config/$RUNNER_NAME:/etc/gitlab-runner \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    gitlab/gitlab-runner:latest
+
+docker exec -ti $CONTAINER gitlab-ci-multi-runner register \
+    --non-interactive \
+    --url $GITLABCI_URL \
+    --registration-token $GITLABCI_TOKEN \
+    --name $RUNNER_NAME \
+    --executor docker \
+    --docker-image docker:git \
+    --docker-volumes '/var/run/docker.sock:/var/run/docker.sock'
+
