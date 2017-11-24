@@ -1,4 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+if [[ $# -ne 3 ]]; then
+   echo "Usage ./gu-setup-ci-runner <gitlab url> <token> <runner name>"
+   exit 1
+fi
+
 
 GITLABCI_URL=$1
 GITLABCI_TOKEN=$2
