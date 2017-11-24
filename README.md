@@ -17,3 +17,20 @@ git clone git@github.com:ondrejsika/gitlab-utils.git
 export PATH=$PATH:`pwd`/gitlab-utils
 ```
 
+## Scripts
+
+### gu-setup-ci-runner
+
+Create and setup Docker container with Gitlab CI Runner
+
+```
+gu-setup-ci-runner <gitlab url> <token> <runner name>
+```
+
+Example
+
+```
+gu-setup-ci-runner https://gitlab.com a0a0a0a0a0 sika-x1
+
+```
+
